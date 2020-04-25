@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Primeiro from './componentes/Componente';
+import Familia from './componentes/FamiliaSilva';
 
 const elemento = document.getElementById('root');
 
 ReactDOM.render(
     <div>
-        <Primeiro></Primeiro>
+        <Familia></Familia>
+        {/* <Primeiro valor="Props" valor2={123}></Primeiro> */}
     </div>  
 , elemento)
   

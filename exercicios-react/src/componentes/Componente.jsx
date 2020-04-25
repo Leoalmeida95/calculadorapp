@@ -1,9 +1,10 @@
 import React from 'react';
 
-export default () =>
-<div>
-    <h1>Primeiro Componente (Arrow) </h1>
-</div>
+export default (props) =>
+<>
+    <h1>{props.valor}</h1>
+    <h2>{props.valor2}</h2>
+</>
 
 // function primeiro(){
 //     return <h1>Primeiro Componente</h1>

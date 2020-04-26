@@ -8,14 +8,17 @@ export default class Contador extends Component{
 
     maisUm = () =>
     {
-        this.setState({numero: this.state.numero+1});
-        // this.setState(()=> this.state.numero++);   
+        this.alterarNumero(1);
     }
 
     menosUm = () =>
     {
-        this.setState({numero: this.state.numero-1});
-        // this.setState(()=> this.state.numero--);       
+        this.alterarNumero(-1); 
+    }
+
+    alterarNumero = diferenca =>{
+        this.setState({numero: this.state.numero + diferenca});
+        // this.setState(()=> this.state.numero++);   
     }
 
     render(){

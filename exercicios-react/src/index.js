@@ -4,14 +4,16 @@ import ReactDOM from 'react-dom';
 // import Membro from './componentes/Membro';
 // import ComponenteComFuncao from './componentes/ComponenteComFuncao';
 // import Pai from './componentes/Pai'; 
-import ComponenteClasse from './componentes/ComponenteClasse';
-import Contador from './componentes/Contador';
+// import ComponenteClasse from './componentes/ComponenteClasse';
+// import Contador from './componentes/Contador';
+import Hooks from './componentes/Hooks';
 
 const elemento = document.getElementById('root');
 
 ReactDOM.render(
     <div>
-        <Contador numeroInicial={0}></Contador>
+        <Hooks></Hooks>
+        {/* <Contador numeroInicial={0}></Contador> */}
         {/* <ComponenteClasse valor="Componente classe"></ComponenteClasse> */}
         {/* {<Pai></Pai>} */}
         {/* <ComponenteComFuncao></ComponenteComFuncao> */}

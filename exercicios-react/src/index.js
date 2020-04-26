@@ -8,7 +8,8 @@ const elemento = document.getElementById('root');
 ReactDOM.render(
     <div>
         <Familia sobrenome="Silva"> 
-            <Membro nome="Leo "></Membro>
+            <Membro nome="Leo"/>
+            <Membro nome="Luana"/>
         </Familia>
     </div>  
 , elemento)

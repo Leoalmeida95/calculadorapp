@@ -2,20 +2,26 @@ import React, {Component} from 'react';
 
 export default class Contador extends Component{
 
+    state={
+        numero: this.props.numeroInicial
+    }
+
     maisUm = () =>
     {
-        this.props.numero++;
+        this.setState({numero: this.state.numero+1});
+        // this.setState(()=> this.state.numero++);   
     }
 
     menosUm = () =>
     {
-        this.props.numero--;
+        this.setState({numero: this.state.numero-1});
+        // this.setState(()=> this.state.numero--);       
     }
 
     render(){
         return(
         <>
-            <div>Número {this.props.numero}</div>
+            <div>Número: {this.state.numero}</div>
             <button onClick={this.maisUm}>Inc</button>
             <button onClick={this.menosUm}>Dec</button>
         </>

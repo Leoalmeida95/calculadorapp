@@ -11,7 +11,7 @@ const elemento = document.getElementById('root');
 
 ReactDOM.render(
     <div>
-        <Contador numero={0}></Contador>
+        <Contador numeroInicial={0}></Contador>
         {/* <ComponenteClasse valor="Componente classe"></ComponenteClasse> */}
         {/* {<Pai></Pai>} */}
         {/* <ComponenteComFuncao></ComponenteComFuncao> */}

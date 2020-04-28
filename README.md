@@ -1,2 +1,2 @@
-# reactodoapp
-Projeto 'To do' App com ReactJS e Docker
+# calculadorapp
+Projeto de Calculadora com ReactJS e Docker

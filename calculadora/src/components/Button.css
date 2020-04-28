@@ -12,6 +12,11 @@
     outline: none;
 }
 
+button::-moz-focus-inner {
+    border: 0;
+  }
+  
+
 .button:active{
     background-color: #ccc;
 }

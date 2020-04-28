@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --progress --colors --inline --hot",
-    "production": "webpack --progress -p"
+    "production": "webpack --progress -p",
+    "start": "webpack-dev-server --host 0.0.0.0 --config ./webpack.config.js --mode development",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "keywords": [],
   "author": "",

@@ -4,4 +4,4 @@
 Projeto Front-End com React, CSS e Docker
 
 ## Todoapp
-Persistência de dados com MongoDB, NodeJS no Back-End e ReactJS com Bootstrap para o Front-End
+Compose com Docker, persistência de dados com MongoDB, NodeJS+Express no Back-End e ReactJS com Bootstrap para o Front-End

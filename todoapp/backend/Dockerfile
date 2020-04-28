@@ -10,6 +10,6 @@ RUN npm install nodemon -g --quiet
 
 COPY /src/loader.js .
 
-EXPOSE 3003
+EXPOSE 3004
 
 CMD nodemon -L --watch . src/loader.js

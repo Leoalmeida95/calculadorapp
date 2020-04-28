@@ -15,7 +15,7 @@ services:
     links:
       - db
     ports:
-      - '3003:3000'
+      - '3004:3004'
 
   db:
     network_mode: bridge

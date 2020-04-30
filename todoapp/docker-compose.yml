@@ -14,9 +14,10 @@ services:
     environment:
       NODE_ENV: development
     depends_on: 
-      - server
+      - server1
+      - server2
    
-  server:
+  server1:
     network_mode: bridge
     container_name: expressapp
     build: './backend'
@@ -29,7 +30,32 @@ services:
     links:
       - db
     ports:
-      - '3004:3004'
+      - '5001:5000'
+
+  server2:
+    network_mode: bridge
+    container_name: expressapp2
+    build: './backend'
+    volumes:
+      - ./backend:/node-app
+    environment:
+      NODE_ENV: development
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - '5002:5000'
+
+  loadbalancer:
+    network_mode: bridge
+    container_name: loadbalancer
+    build: '.'
+    links:
+        - server1
+        - server2
+    ports:
+        - '5000:80'
 
   db:
     network_mode: bridge
@@ -40,3 +66,5 @@ services:
     volumes:
       - ./backend/data/db:/data/db
     restart: unless-stopped
+
+  

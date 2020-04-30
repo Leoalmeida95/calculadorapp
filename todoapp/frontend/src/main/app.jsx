@@ -6,8 +6,10 @@ import Routes from './routes'
 import React from 'react'
 
 export default props =>(
-    <div className='container'>
+    <div>
         <Menu></Menu>
-        <Routes></Routes>
+        <div className='container'>
+            <Routes></Routes>
+        </div>
     </div>
 )

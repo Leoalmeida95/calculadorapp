@@ -47,10 +47,10 @@ services:
     ports:
       - '5002:5000'
 
-  loadbalancer:
+  loadbalance:
     network_mode: bridge
-    container_name: loadbalancer
-    build: '.'
+    container_name: loadbalance
+    build: ./
     links:
         - server1
         - server2

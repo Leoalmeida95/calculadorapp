@@ -20,13 +20,12 @@ export default class Todo extends Component{
         axios.get(`${URL}?sort=-createdAt`)
             .then(resp=> {
                 this.setState({...this.state, description:'', list: resp.data})
-                console.log(this.state.list)
             })
             .catch(e=>{console.log(e)})
     }
 
-    handleRemove(id){
-        axios.delete(`${URL}/${id}`)
+    handleRemove(todo){
+        axios.delete(`${URL}/${todo._id}`)
             .then(resp=>{this.refresh()})
             .catch(e=>{console.log(e)})
     }

@@ -1,39 +1,47 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
-import {changeDescription} from '../todo/todoActions'
+import {changeDescription, search} from '../todo/todoActions'
 import Grid from '../template/grid'
 import IconButton from '../template/iconButton'
 
-const TodoForm = props =>
-{
-
-const keyHandler = (e) =>{
-    if(e.key === 'Enter'){
-        e.shiftKey ? props.handleSearch() : props.handleAdd()
-    }else if (e.key === 'Escape'){
-        props.handleClear()
+class TodoForm extends Component{
+    constructor(props){
+        super(props)
+        this.keyHandler = this.keyHandler.bind(this)
     }
-}
 
+    componentWillMount(){
+        this.props.search()
+    }
 
-return(
-    <div role='form'>
-        <div className='row'>
-            <Grid cols='12 9 10'>
-                <input id='description' value={props.description} onChange={props.changeDescription}
-                className='form-control' placeholder='Adicione uma tarefa' onKeyUp={keyHandler} ></input>
-            </Grid>
-    
-            <Grid cols='12 3 2'>
-                <IconButton style='primary' icon='plus' onClick={props.handleAdd}></IconButton>
-                <IconButton style='info' icon='search' onClick={props.handleSearch}></IconButton>
-                <IconButton style='dark' icon='close' onClick={props.handleClear}></IconButton>
-            </Grid>
-        </div>
-    </div>
-    )
+    keyHandler (e){
+        if(e.key === 'Enter'){
+            e.shiftKey ? this.props.handleSearch() : this.props.handleAdd()
+        }else if (e.key === 'Escape'){
+            this.props.handleClear()
+        }
+    }
+
+    render(){
+        return(
+            <div role='form'>
+                <div className='row'>
+                    <Grid cols='12 9 10'>
+                        <input id='description' value={this.props.description} onChange={this.props.changeDescription}
+                        className='form-control' placeholder='Adicione uma tarefa' onKeyUp={this.keyHandler} ></input>
+                    </Grid>
+            
+                    <Grid cols='12 3 2'>
+                        <IconButton style='primary' icon='plus' onClick={this.props.handleAdd}></IconButton>
+                        <IconButton style='info' icon='search' onClick={this.props.handleSearch}></IconButton>
+                        <IconButton style='dark' icon='close' onClick={this.props.handleClear}></IconButton>
+                    </Grid>
+                </div>
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = state =>(
@@ -41,6 +49,6 @@ const mapStateToProps = state =>(
 )
 
 const mapDispatchToProps = dispatch => 
-bindActionCreators({changeDescription}, dispatch)
+bindActionCreators({changeDescription, search}, dispatch)
 
 export default connect(mapStateToProps,mapDispatchToProps)(TodoForm)

@@ -56,6 +56,10 @@ export default class Todo extends Component{
             .catch(e=>{console.log(e)})
     }
 
+    handleClear(){
+        this.refresh()
+    }
+
     handleChange(e){
         this.setState({...this.state, description: e.target.value})
     }
@@ -65,7 +69,8 @@ export default class Todo extends Component{
             <div>
                 <PageHeader name='Tarefas' small='Cadastro'></PageHeader>
                 <TodoForm description={this.state.description} handleChange={(e)=> this.handleChange(e)} 
-                handleAdd={()=> this.handleAdd()} handleSearch={()=> this.handleSearch()} ></TodoForm>
+                handleAdd={()=> this.handleAdd()} handleSearch={()=> this.handleSearch()}
+                handleClear={()=> this.handleClear()} ></TodoForm>
                 <TodoList list={this.state.list} handleRemove={this.handleRemove} 
                 handleMarkAsDone={this.handleMarkAsDone}  handleMarkAsPending={this.handleMarkAsPending} ></TodoList>
             </div>

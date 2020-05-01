@@ -1,6 +1,4 @@
-export function changeValue(e){
-    return{
-        type:'VALUE_CHANGED',
-        payload: e.target.value
-    }
-}
+export const changeDescription = event =>({
+    type:'DESCRIPTION_CHANGED',
+    payload: event.target.value
+})

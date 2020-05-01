@@ -3,7 +3,6 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
-import {changeValue} from '../todo/todoActions'
 import PageHeader from '../template/pageHeader'
 import TodoForm from './todoForm'
 import TodoList from './todoList'

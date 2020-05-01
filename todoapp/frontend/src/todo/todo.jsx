@@ -1,13 +1,16 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
+import {changeValue} from '../todo/todoActions'
 import PageHeader from '../template/pageHeader'
 import TodoForm from './todoForm'
 import TodoList from './todoList'
 
 const URL = 'http://localhost:5001/api/todos'
 
-export default class Todo extends Component{
+class Todo extends Component{
     
     constructor(props) {
         super(props)
@@ -77,3 +80,15 @@ export default class Todo extends Component{
         )
     }
 }
+
+const mapStateToProps = (state) =>  {
+    return{
+        value: state.field.value
+    }
+}
+
+const mapDispatchToProps = (dispacth) =>
+    (bindActionCreators({changeValue}, dispacth))
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todo)

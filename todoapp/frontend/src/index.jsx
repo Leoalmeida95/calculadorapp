@@ -1,17 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {combineReducers, createStore} from 'redux'
+import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 
 import App from './main/app'
-import todoReducer from './todo/todoReducer'
+import reducers from './main/reducers'
 
-const reducers = combineReducers({
-    field: todoReducer
-})
+const store = createStore(reducers)
 
 ReactDOM.render(
-<Provider store={createStore(reducers)}>
+<Provider store={store}>
     <App/>
 </Provider>, 
 document.getElementById('app'))

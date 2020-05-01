@@ -81,14 +81,14 @@ class Todo extends Component{
     }
 }
 
-const mapStateToProps = (state) =>  {
-    return{
-        value: state.field.value
-    }
-}
+// const mapStateToProps = (state) =>  {
+//     return{
+//         value: state.field.value
+//     }
+// }
 
-const mapDispatchToProps = (dispacth) =>
-    (bindActionCreators({changeValue}, dispacth))
+// const mapDispatchToProps = (dispacth) =>
+//     (bindActionCreators({changeValue}, dispacth))
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Todo)
+export default Todo

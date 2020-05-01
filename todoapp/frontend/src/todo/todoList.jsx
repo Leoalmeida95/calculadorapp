@@ -9,7 +9,7 @@ const list = props.list || []
 var rows = list.map(todo => 
     {
         return(
-                <tr className="table-dark" key={todo._id}>
+                <tr className="table-light" key={todo._id}>
                     <th className={todo.done ? 'markedAsDone' : ''} scope="row">{todo.description}</th>
                     <td>
                         <IconButton style='danger' icon='trash-o' hide={!todo.done}
@@ -29,8 +29,8 @@ return(
     <table className="table table-hover mt-5">
     <thead>
         <tr>
-        <th scope="col">Descrição</th>
-        <td>Ações</td>
+            <th scope="col">Descrição</th>
+            <th scope="col">Ações</th>
         </tr>
     </thead>
     <tbody>

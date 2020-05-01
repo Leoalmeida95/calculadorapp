@@ -18,29 +18,34 @@ export default class Todo extends Component{
         this.refresh()
     }
 
-    refresh(){
-        axios.get(`${URL}?sort=-createdAt`)
+    refresh(description=''){
+        const search = description ? `&description__regex=/${description}/`:''
+        axios.get(`${URL}?sort=-createdAt${search}`)
             .then(resp=> {
-                this.setState({...this.state, description:'', list: resp.data})
+                this.setState({...this.state, description, list: resp.data})
             })
             .catch(e=>{console.log(e)})
+    }
+
+    handleSearch(){
+        this.refresh(this.state.description)
     }
     
     handleMarkAsPending(todo){
         axios.put(`${URL}/${todo._id}`,{...todo,done:false})
-            .then(resp=>{this.refresh()})
+            .then(resp=>{this.refresh(this.state.description)})
             .catch(e=>{console.log(e)})
     }
 
     handleMarkAsDone(todo){
         axios.put(`${URL}/${todo._id}`,{...todo,done:true})
-            .then(resp=>{this.refresh()})
+            .then(resp=>{this.refresh(this.state.description)})
             .catch(e=>{console.log(e)})
     }
 
     handleRemove(todo){
         axios.delete(`${URL}/${todo._id}`)
-            .then(resp=>{this.refresh()})
+            .then(resp=>{this.refresh(this.state.description)})
             .catch(e=>{console.log(e)})
     }
 
@@ -59,7 +64,8 @@ export default class Todo extends Component{
         return(
             <div>
                 <PageHeader name='Tarefas' small='Cadastro'></PageHeader>
-                <TodoForm description={this.state.description} handleChange={(e)=> this.handleChange(e)} handleAdd={()=> this.handleAdd()} ></TodoForm>
+                <TodoForm description={this.state.description} handleChange={(e)=> this.handleChange(e)} 
+                handleAdd={()=> this.handleAdd()} handleSearch={()=> this.handleSearch()} ></TodoForm>
                 <TodoList list={this.state.list} handleRemove={this.handleRemove} 
                 handleMarkAsDone={this.handleMarkAsDone}  handleMarkAsPending={this.handleMarkAsPending} ></TodoList>
             </div>

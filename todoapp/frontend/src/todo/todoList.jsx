@@ -10,10 +10,14 @@ var rows = list.map(todo =>
     {
         return(
                 <tr className="table-dark" key={todo._id}>
-                    <th scope="row">{todo.description}</th>
+                    <th className={todo.done ? 'markedAsDone' : ''} scope="row">{todo.description}</th>
                     <td>
-                        <IconButton style='danger' icon='trash-o'
+                        <IconButton style='danger' icon='trash-o' hide={!todo.done}
                             onClick={() => props.handleRemove(todo)} ></IconButton>
+                        <IconButton style='success' icon='check' hide={todo.done}
+                            onClick={() => props.handleMarkAsDone(todo)} ></IconButton>
+                        <IconButton style='warning' icon='undo' hide={!todo.done}
+                            onClick={() => props.handleMarkAsPending(todo)} ></IconButton>
                     </td>
                 </tr>
         )
@@ -26,6 +30,7 @@ return(
     <thead>
         <tr>
         <th scope="col">Descrição</th>
+        <td>Ações</td>
         </tr>
     </thead>
     <tbody>

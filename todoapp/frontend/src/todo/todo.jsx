@@ -12,6 +12,8 @@ export default class Todo extends Component{
     constructor(props) {
         super(props)
         this.state={description:'', list: []}
+        this.handleMarkAsDone = this.handleMarkAsDone.bind(this)
+        this.handleMarkAsPending = this.handleMarkAsPending.bind(this)
         this.handleRemove = this.handleRemove.bind(this)
         this.refresh()
     }
@@ -21,6 +23,18 @@ export default class Todo extends Component{
             .then(resp=> {
                 this.setState({...this.state, description:'', list: resp.data})
             })
+            .catch(e=>{console.log(e)})
+    }
+    
+    handleMarkAsPending(todo){
+        axios.put(`${URL}/${todo._id}`,{...todo,done:false})
+            .then(resp=>{this.refresh()})
+            .catch(e=>{console.log(e)})
+    }
+
+    handleMarkAsDone(todo){
+        axios.put(`${URL}/${todo._id}`,{...todo,done:true})
+            .then(resp=>{this.refresh()})
             .catch(e=>{console.log(e)})
     }
 
@@ -46,7 +60,8 @@ export default class Todo extends Component{
             <div>
                 <PageHeader name='Tarefas' small='Cadastro'></PageHeader>
                 <TodoForm description={this.state.description} handleChange={(e)=> this.handleChange(e)} handleAdd={()=> this.handleAdd()} ></TodoForm>
-                <TodoList list={this.state.list} handleRemove={this.handleRemove} ></TodoList>
+                <TodoList list={this.state.list} handleRemove={this.handleRemove} 
+                handleMarkAsDone={this.handleMarkAsDone}  handleMarkAsPending={this.handleMarkAsPending} ></TodoList>
             </div>
         )
     }

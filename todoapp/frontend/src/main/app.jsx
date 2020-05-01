@@ -1,5 +1,7 @@
 import 'modules/bootswatch/dist/pulse/bootstrap.css'
 import 'modules/font-awesome/css/font-awesome.min.css'
+import '../template/custom.css'
+
 import Menu from '../template/menu'
 import Routes from './routes'
 

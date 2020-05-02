@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
 
 import PageHeader from '../template/pageHeader'
 import TodoForm from './todoForm'
@@ -79,15 +77,5 @@ class Todo extends Component{
         )
     }
 }
-
-// const mapStateToProps = (state) =>  {
-//     return{
-//         value: state.field.value
-//     }
-// }
-
-// const mapDispatchToProps = (dispacth) =>
-//     (bindActionCreators({changeValue}, dispacth))
-
 
 export default Todo
